@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
 
+const messages = []
 function App() {
+  printMessages()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='main-container'>
+      <div className='main-header'></div>
+      <div className='main-body'>
+        {
+           messages?.map(message => {
+            return (
+              <div className='message-preview'>{message}</div>
+            )
+          })
+        }
+      </div>
+      <div className='main-bottom-nav'></div>
     </div>
   );
+}
+
+const printMessages = () => {
+  for (var i = 0; i < 15; i++) {
+    messages.push('This is a message')
+  }
+  return 
 }
 
 export default App;
