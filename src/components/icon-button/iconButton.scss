@@ -1,0 +1,6 @@
+.icon-button {
+    cursor: pointer;
+    &:active{
+        color: $color-primary;
+    }
+}

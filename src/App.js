@@ -1,29 +1,23 @@
 
-const messages = []
-function App() {
-  printMessages()
-  return (
-    <div className='main-container'>
-      <div className='main-header'></div>
-      <div className='main-body'>
-        {
-           messages?.map(message => {
-            return (
-              <div className='message-preview'>{message}</div>
-            )
-          })
-        }
+import React from 'react'
+import BottomNav from './components/bottom-nav/BottomNav';
+import Header from './components/header/Header';
+import Main from './screens/main/Main';
+
+
+
+
+class App extends React.Component {
+  render (){
+    return (
+      <div className='main-container'>
+        <Header />
+        <Main />
+        <BottomNav />
       </div>
-      <div className='main-bottom-nav'></div>
-    </div>
-  );
+    );
+  }
 }
 
-const printMessages = () => {
-  for (var i = 0; i < 15; i++) {
-    messages.push('This is a message')
-  }
-  return 
-}
 
 export default App;

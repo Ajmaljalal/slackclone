@@ -1,5 +1,8 @@
 @import-normalize;
 @import './App.scss';
+@import './components//bottom-nav/bottomNav.scss';
+@import './components//header/header.scss';
+@import './screens/home/home.scss';
 
 
 body {
