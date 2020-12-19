@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import Home from './../home/Home';
 
 
@@ -14,7 +14,7 @@ export default class Main extends Component {
   }
 
 
-  static propTypes = {
-    // prop: PropTypes
-  }
+  // static propTypes = {
+  //   // prop: PropTypes
+  // }
 }

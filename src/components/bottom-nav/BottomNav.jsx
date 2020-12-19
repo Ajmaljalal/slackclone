@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import IconButton from '../icon-button/IconButton'
 
 
@@ -15,8 +15,8 @@ export default class BottomNav extends Component {
     )
   }
 
-  static propTypes = {
-    // prop: PropTypes
-  }
+  // static propTypes = {
+  //   // prop: PropTypes
+  // }
 
 }

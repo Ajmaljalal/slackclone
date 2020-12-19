@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const channels = [
@@ -45,9 +45,9 @@ const groups = [
 ]
 
 export default class Home extends Component {
-  static propTypes = {
-    prop: PropTypes
-  }
+  // static propTypes = {
+  //   prop: PropTypes
+  // }
 
   render() {
     return (
@@ -64,8 +64,8 @@ export default class Home extends Component {
     return channels?.map((channel) => {
       return (
         <div key={channel.id} className='home__section__item'>
-            <div>{channel.name}</div>
-            <div><FontAwesomeIcon icon='angle-left' color='black' /></div>
+          <div>{channel.name}</div>
+          <div><FontAwesomeIcon icon='angle-left' color='black' /></div>
         </div>
       )
     })
