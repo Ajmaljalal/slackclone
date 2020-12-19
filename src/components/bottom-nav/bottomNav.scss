@@ -4,7 +4,9 @@
         background: $color-white;     
         border-top: .5px solid rgba(155, 155, 155, 0.2);
         z-index: 10;  
-
+        position: fixed;
+        bottom: 0;
+        left: 0;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
