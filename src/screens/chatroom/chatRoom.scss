@@ -38,7 +38,7 @@
 
 .message {
   &__w {
-    padding: 15px 10px;
+    padding: 15px 13px;
     box-sizing: border-box;
     display: flex;
     align-items: flex-start;
@@ -46,16 +46,16 @@
 
   &__avatar {
     margin-left: 8px;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     border-radius: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 2px;
     img {
-      width: 25px;
-      height: 25px;
+      width: 30px;
+      height: 30px;
       border-radius: 15%;
     }
   }
