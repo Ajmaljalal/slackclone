@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ChatRoom from '../chatroom/ChatRoom'
 
 const channels = [
   {
@@ -49,7 +50,39 @@ export default class Home extends Component {
   //   prop: PropTypes
   // }
 
+  state = {
+    currentScreen: 'home',
+    chatroomId: null
+  }
+
+
   render() {
+    return this.renderScreens()
+  }
+
+  hanldeScreensChange = (screen, id) => {
+    this.setState({
+      currentScreen: screen,
+      chatroomId: id
+    })
+  }
+
+  renderScreens = () => {
+    const { currentScreen } = this.state
+    console.log(this.state.currentScreen)
+    switch (currentScreen) {
+      case 'home':
+        return this.renderHomeScreen()
+      case 'channel':
+      case 'group':
+        return <ChatRoom channelId={this.state.chatroomId} />
+      default:
+        return this.renderHomeScreen()
+    }
+  }
+
+
+  renderHomeScreen = () => {
     return (
       <div className='home-w'>
         <div className='home__section-title'>چینلونه</div>
@@ -63,7 +96,7 @@ export default class Home extends Component {
   renderChannels = () => {
     return channels?.map((channel) => {
       return (
-        <div key={channel.id} className='home__section__item'>
+        <div key={channel.id} className='home__section__item' onClick={() => this.hanldeScreensChange('channel', channel.id)}>
           <div>{channel.name}</div>
           <div><FontAwesomeIcon icon='angle-left' color='black' /></div>
         </div>
@@ -74,7 +107,7 @@ export default class Home extends Component {
   renderGroups = () => {
     return groups?.map((group) => {
       return (
-        <div key={group.id} className='home__section__item'>
+        <div key={group.id} className='home__section__item' onClick={() => this.hanldeScreensChange('group', group.id)}>
           <div>{group.name}</div>
           <div><FontAwesomeIcon icon='angle-left' color='black' /></div>
         </div>

@@ -17,7 +17,7 @@ export default class IconButton extends Component {
   render() {
     return (
       <div className='icon-button' onClick={this.handleClick}>
-        <FontAwesomeIcon icon={this.props.icon} color={this.state.clicked ? 'black' : '#D4D4D4'} />
+        <FontAwesomeIcon size='lg' icon={this.props.icon} color={this.state.clicked ? 'black' : '#D4D4D4'} />
       </div>
     )
   }
