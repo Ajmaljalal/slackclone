@@ -111,10 +111,15 @@ const messages = [
 ]
 export default class ChatRoom extends Component {
   messagesEndRef = React.createRef()
+  textareaElement = React.createRef()
 
 
   componentDidMount() {
     this.scrollToBottom()
+    this.textareaElement.current.onfocus = () => {
+      window.scrollTo(0, 0);
+      document.body.scrollTop = 0;
+    };
   }
   componentDidUpdate() {
     this.scrollToBottom()
@@ -131,7 +136,7 @@ export default class ChatRoom extends Component {
           messages.map((msg, index) => {
             return (
               <div className='message__w' key={msg.id}>
-                <div className='message__avatar'><img src={msg.ownerImage} alt='userAvatar'/></div>
+                <div className='message__avatar'><img src={msg.ownerImage} alt='userAvatar' /></div>
                 <div>
                   <div className='message__owner-date'>
                     <span className='message__owner'>{msg.owner}</span>
@@ -145,7 +150,7 @@ export default class ChatRoom extends Component {
         }
         <div ref={this.messagesEndRef} />
         <div className='chatroom__textbox'>
-          <textarea placeholder='څه ولیکئ...!'/>
+          <textarea placeholder='څه ولیکئ...!' ref={this.textareaElement} />
         </div>
       </div>
     )
