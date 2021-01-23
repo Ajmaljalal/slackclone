@@ -145,7 +145,7 @@ export default class ChatRoom extends Component {
         }
         <div ref={this.messagesEndRef} />
         <div className='chatroom__textbox'>
-          <textarea placeholder=' خپل پیغام دلته ولیکئ!'/>
+          <textarea placeholder='څه ولیکئ...!'/>
         </div>
       </div>
     )

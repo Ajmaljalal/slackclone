@@ -3,28 +3,20 @@ import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class IconButton extends Component {
-  state = {
-    clicked: false
-  }
 
 
-  // need to bring this from redux store
-  handleClick = () => {
-    this.setState({
-      clicked: true
-    })
-  }
   render() {
+    const { icon, handleScreenChange, screen } = this.props
     return (
-      <div className='icon-button' onClick={this.handleClick}>
-        <FontAwesomeIcon size='lg' icon={this.props.icon} color={this.state.clicked ? 'black' : '#D4D4D4'} />
+      <div className='icon-button' onClick={() => handleScreenChange(icon)}>
+        <FontAwesomeIcon size='lg' icon={icon} color={icon === screen ? 'black' : '#D4D4D4'} />
       </div>
     )
   }
 
   static propTypes = {
-    // prop: PropTypes
-    // color: PropTypes.string\
     icon: PropTypes.string.isRequired,
+    handleScreenChange: PropTypes.func,
+    screen: PropTypes.string
   }
 }

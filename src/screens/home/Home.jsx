@@ -60,17 +60,18 @@ export default class Home extends Component {
     return this.renderScreens()
   }
 
-  hanldeScreensChange = (screen, id) => {
+  openChatroom = (screen, id) => {
+    const { handleScreenChange } = this.props
+    handleScreenChange(screen)
     this.setState({
-      currentScreen: screen,
       chatroomId: id
     })
   }
 
   renderScreens = () => {
-    const { currentScreen } = this.state
-    console.log(this.state.currentScreen)
-    switch (currentScreen) {
+    const { screen } = this.props
+    console.log(screen)
+    switch (screen) {
       case 'home':
         return this.renderHomeScreen()
       case 'channel':
@@ -96,7 +97,7 @@ export default class Home extends Component {
   renderChannels = () => {
     return channels?.map((channel) => {
       return (
-        <div key={channel.id} className='home__section__item' onClick={() => this.hanldeScreensChange('channel', channel.id)}>
+        <div key={channel.id} className='home__section__item' onClick={() => this.openChatroom('channel', channel.id)}>
           <div>{channel.name}</div>
           <div><FontAwesomeIcon icon='angle-left' color='black' /></div>
         </div>
@@ -107,7 +108,7 @@ export default class Home extends Component {
   renderGroups = () => {
     return groups?.map((group) => {
       return (
-        <div key={group.id} className='home__section__item' onClick={() => this.hanldeScreensChange('group', group.id)}>
+        <div key={group.id} className='home__section__item' onClick={() => this.openChatroom('group', group.id)}>
           <div>{group.name}</div>
           <div><FontAwesomeIcon icon='angle-left' color='black' /></div>
         </div>
