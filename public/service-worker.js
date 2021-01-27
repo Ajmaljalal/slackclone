@@ -33,6 +33,8 @@ self.addEventListener('fetch', (event) => {
         return caches.open(CACHE_NAME).then((cache) => {
           cache.put(event.request, response.clone());
           return response;
+        }).catch(() => {
+          return caches.match('offline.html')
         });
       });
     })
