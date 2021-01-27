@@ -1,5 +1,5 @@
 const CACHE_NAME = 'version-1';
-const urlsToCache = ['index.html', 'offline.html', 'logo.png'];
+const urlsToCache = ['index.html', 'offline.html', './icons/logo.png'];
 
 const self = this;
 // Install SW
