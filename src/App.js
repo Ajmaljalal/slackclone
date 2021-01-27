@@ -1,9 +1,13 @@
 
 import React from 'react'
-import BottomNav from './components/bottom-nav/BottomNav';
-import Header from './components/header/Header';
-import Main from './screens/main/Main';
 
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+const BottomNav = React.lazy(() => import('./components/bottom-nav/BottomNav'))
+const Header = React.lazy(() => import('./components/header/Header'))
+const Main = React.lazy(() => import('./screens/main/Main'))
+library.add(fas)
 class App extends React.Component {
   state = {
     screen: 'home'
@@ -17,16 +21,19 @@ class App extends React.Component {
   render() {
     const { screen } = this.state
     return (
+
       <div className='main-container'>
-        <Header screen={screen} handleScreenChange={this.handleScreenChange} />
-        <Main screen={screen} handleScreenChange={this.handleScreenChange} />
-        {
-          screen === 'home' ||
-            screen === 'comment' ||
-            screen === 'cog' ?
-            <BottomNav screen={screen} handleScreenChange={this.handleScreenChange} />
-            : null
-        }
+        <React.Suspense fallback={<div>wait...</div>}>
+          <Header screen={screen} handleScreenChange={this.handleScreenChange} />
+          <Main screen={screen} handleScreenChange={this.handleScreenChange} />
+          {
+            screen === 'home' ||
+              screen === 'comment' ||
+              screen === 'cog' ?
+              <BottomNav screen={screen} handleScreenChange={this.handleScreenChange} />
+              : null
+          }
+        </React.Suspense>
       </div>
     );
   }

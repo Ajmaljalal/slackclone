@@ -1,5 +1,5 @@
 const CACHE_NAME = 'version-1';
-const urlsToCache = ['index.html', 'offline.html'];
+const urlsToCache = ['index.html', 'offline.html', 'logo.png', 'manifest.json'];
 
 const self = this;
 // Install SW
@@ -14,16 +14,29 @@ self.addEventListener('install', (event) => {
 });
 
 // Listen for requests
+// self.addEventListener('fetch', (event) => {
+//   event.respondWith(
+//     caches.match(event.request)
+//       .then((response) => {
+//         return response || fetch(event.request)
+//           .catch(() => {
+//             return caches.match('offline.html')
+//           })
+//       })
+//   )
+// });
+
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request)
-      .then(() => {
-        return fetch(event.request)
-          .catch(() => {
-            return caches.match('offline.html')
-          })
-      })
-  )
+    caches.match(event.request).then((resp) => {
+      return resp || fetch(event.request).then((response) => {
+        return caches.open(CACHE_NAME).then((cache) => {
+          cache.put(event.request, response.clone());
+          return response;
+        });
+      });
+    })
+  );
 });
 
 // Activate the SW

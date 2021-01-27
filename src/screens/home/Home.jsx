@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import ChatRoom from '../chatroom/ChatRoom'
+const ChatRoom = React.lazy(() => import('../chatroom/ChatRoom'))
 
 const channels = [
   {
@@ -57,7 +57,11 @@ export default class Home extends Component {
 
 
   render() {
-    return this.renderScreens()
+    return (
+      <React.Suspense fallback={<div>wait...</div>}>
+        {this.renderScreens()}
+      </React.Suspense>
+    )
   }
 
   openChatroom = (screen, id) => {
